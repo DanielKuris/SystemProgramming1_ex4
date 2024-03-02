@@ -183,14 +183,14 @@ int main(int argc, char *argv[]) {
             size_t filenameLength = strlen(extension) - strlen(filename) -1; //-1 to include the dot '.' 
 
             // Allocate memory for the binary filename
-            char txtFileName[filenameLength + 5]; // +5 for ".bin" and null terminator
+            char textFileName[filenameLength + 5]; // +5 for ".bin" and null terminator
 
             // Copy the filename without the extension
-            memcpy(txtFileName, filename, filenameLength);
-            txtFileName[filenameLength] = '\0'; // Null-terminate the string
+            memcpy(textFileName, filename, filenameLength);
+            textFileName[filenameLength] = '\0'; // Null-terminate the string
 
             // Append the ".bin" extension
-            strcat(txtFileName, ".bin");
+            strcat(textFileName, ".bin");
 
             // Clear the text file
             FILE *txtFile = fopen(textFileName, "w");
