@@ -27,9 +27,17 @@ int main(int argc, char *argv[]) {
         if (strcmp(extension, "txt") == 0) {
             printf("Compressing text file: %s\n", filename);
 
-            // Construct the new filename for the binary file
-            char binFilename[strlen(filename) + 5]; // +5 for ".bin" and null terminator
-            strcpy(binFilename, filename);
+            /// Determine the length of the filename without the extension
+            size_t filenameLength = strlen(extension) - strlen(filename) -1; //-1 to include the dot '.' 
+
+            // Allocate memory for the binary filename
+            char binFilename[filenameLength + 5]; // +5 for ".bin" and null terminator
+
+            // Copy the filename without the extension
+            memcpy(binFilename, filename, filenameLength);
+            binFilename[filenameLength] = '\0'; // Null-terminate the string
+
+            // Append the ".bin" extension
             strcat(binFilename, ".bin");
 
             // Clear the binary file
@@ -105,6 +113,7 @@ int main(int argc, char *argv[]) {
 
                         // Close the binary file
                         fclose(binFile);
+
                         return 1;
                     }
                 }
@@ -155,6 +164,8 @@ int main(int argc, char *argv[]) {
 
             // Close the binary file
             fclose(binFile);
+
+            printf("Generated bin file: %s\n", binFileName);
            
         } else {
             //Invalid command
@@ -168,10 +179,18 @@ int main(int argc, char *argv[]) {
         if (strcmp(extension, "bin") == 0) {
             printf("Decompressing binary file: %s\n", filename);
 
-            // Construct the new filename for the text file
-            char textFilename[strlen(filename) + 5]; // +5 for ".txt" and null terminator
-            strcpy(textFilename, filename);
-            strcat(textFilename, ".txt");
+            /// Determine the length of the filename without the extension
+            size_t filenameLength = strlen(extension) - strlen(filename) -1; //-1 to include the dot '.' 
+
+            // Allocate memory for the binary filename
+            char txtFileName[filenameLength + 5]; // +5 for ".bin" and null terminator
+
+            // Copy the filename without the extension
+            memcpy(txtFileName, filename, filenameLength);
+            txtFileName[filenameLength] = '\0'; // Null-terminate the string
+
+            // Append the ".bin" extension
+            strcat(txtFileName, ".bin");
 
             // Clear the text file
             FILE *txtFile = fopen(textFilename, "w");
@@ -249,6 +268,9 @@ int main(int argc, char *argv[]) {
             fclose(txtFile);
             fclose(binFile);
             free(binary);
+
+            printf("Generated text file: %s\n", textFilename);
+
 
         } else {
             //Invalid command
