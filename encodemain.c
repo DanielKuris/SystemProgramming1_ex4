@@ -234,13 +234,13 @@ int main(int argc, char *argv[]) {
                     if (count == SIZE) {
                         // Null-terminate the binary string
                         binary[SIZE] = '\0';
-                        if(binary[0] == binary[1] == binary[2] == binary[3] == '0' ) //Illegal word (for testing generated file.bin)
-                            continue;
                         // Remove encoding
                         encode(binary);
                         // Convert binary string to decimal
                         int decimal = binaryToInt(binary);
                         // Write the decimal number to the text file
+                        if(decimal>9 || decimal<0)
+                           continue;
                         fprintf(txtFile, "%d", decimal);
                         // Reset the count for the next binary number
                         count = 0;
