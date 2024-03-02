@@ -269,7 +269,7 @@ int main(int argc, char *argv[]) {
             fclose(binFile);
             free(binary);
 
-            printf("Generated text file: %s\n", textFilename);
+            printf("Generated text file: %s\n", textFileName);
 
 
         } else {
