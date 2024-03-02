@@ -74,7 +74,7 @@ int binaryToInt(char *binary) {
 void encode(char *binary){
     int len = strlen(binary);
 
-    for(int i=0; i <len-1; i++){
+    for(int i=0; i < len; i++){
 
         if (binary[i] == '0')
             binary[i] = '1';
