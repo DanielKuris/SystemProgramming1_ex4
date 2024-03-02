@@ -107,6 +107,9 @@ int main(int argc, char *argv[]) {
                 }
                 else{
                     printf("Invalid input.\n");
+                    printf("Encountered character: %c\n", ch);
+                    if(ch == ' ' || ch == '\n')
+                        printf("Encountered space. \n");
                     //Free the binary string
                     free(binary);
 
