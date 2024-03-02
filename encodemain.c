@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
             printf("Compressing text file: %s\n", filename);
 
             /// Determine the length of the filename without the extension
-            size_t filenameLength = strlen(extension) - strlen(filename) -1; //-1 to include the dot '.' 
+            size_t filenameLength = strlen(filename) - strlen(extension) -1; //-1 to include the dot '.' 
 
             // Allocate memory for the binary filename
             char binFileName[filenameLength + 5]; // +5 for ".bin" and null terminator
@@ -180,7 +180,7 @@ int main(int argc, char *argv[]) {
             printf("Decompressing binary file: %s\n", filename);
 
             /// Determine the length of the filename without the extension
-            size_t filenameLength = strlen(extension) - strlen(filename) -1; //-1 to include the dot '.' 
+            size_t filenameLength = strlen(filename) - strlen(extension)  -1; //-1 to include the dot '.' 
 
             // Allocate memory for the binary filename
             char textFileName[filenameLength + 5]; // +5 for ".bin" and null terminator
