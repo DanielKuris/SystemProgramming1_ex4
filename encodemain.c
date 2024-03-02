@@ -71,7 +71,10 @@ int main(int argc, char *argv[]) {
             }
 
             while ((ch = fgetc(txtFile)) != EOF) {
-
+                
+                // Skip space or \n if encountered
+                if(ch == ' ' || ch == '\n')
+                    continue;
                 // Check if the character is a digit
                 if (ch >= '0' && ch <= '9') {
 
@@ -108,8 +111,7 @@ int main(int argc, char *argv[]) {
                 else{
                     printf("Invalid input.\n");
                     printf("Encountered character: %c\n", ch);
-                    if(ch == ' ' || ch == '\n')
-                        printf("Encountered space. \n");
+                    
                     //Free the binary string
                     free(binary);
 
@@ -202,6 +204,9 @@ int main(int argc, char *argv[]) {
             char *binary = (char *)malloc((SIZE+1)*sizeof(char));
 
             while ((ch = fgetc(binFile)) != EOF) {
+                // Skip space or \n if encountered
+                if(ch == ' ' || ch == '\n')
+                    continue;
                 // Check if the character is '0' or '1'
                 if (ch == '0' || ch == '1') {
                     // Add the character to the binary buffer
@@ -221,6 +226,7 @@ int main(int argc, char *argv[]) {
                     }
                 } else {
                     printf("Invalid input.\n");
+                    printf("Encountered character: %c\n", ch);
                     // Close the files and return with an error
                     fclose(txtFile);
                     fclose(binFile);
