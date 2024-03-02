@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -std=c99 -Werror
 all: digitcompress
 
 digitcompress: encodemain.o compress.o
-	$(CC) $(CFLAGS) -o digitcompress encodemain.o compress.o
+	$(CC) $(CFLAGS) -o digitcompress encodemain.o compress.o -lm
 
 encodemain.o: encodemain.c compress.h
 	$(CC) $(CFLAGS) -c encodemain.c
