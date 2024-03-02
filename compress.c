@@ -56,7 +56,6 @@ char *intToBinary(int num, char *binary) {
 int binaryToInt(char *binary) {
     int result = 0;
     int len = strlen(binary);
-
     // Iterate over each binary digit in the string from right to left
     for (int i = len - 1; i >= 0; i--) {
         // Convert binary digit character to integer value

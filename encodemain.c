@@ -190,7 +190,7 @@ int main(int argc, char *argv[]) {
             textFileName[filenameLength] = '\0'; // Null-terminate the string
 
             // Append the ".bin" extension
-            strcat(textFileName, ".bin");
+            strcat(textFileName, ".txt");
 
             // Clear the text file
             FILE *txtFile = fopen(textFileName, "w");
@@ -229,11 +229,13 @@ int main(int argc, char *argv[]) {
                 // Check if the character is '0' or '1'
                 if (ch == '0' || ch == '1') {
                     // Add the character to the binary buffer
-                    binary[count++] = (char)ch + '0';
+                    binary[count++] = (char)ch;
                     // If the buffer is filled, process and write to the text file
                     if (count == SIZE) {
                         // Null-terminate the binary string
                         binary[SIZE] = '\0';
+                        if(binary[0] == binary[1] == binary[2] == binary[3] == '0' ) //Illegal word (for testing generated file.bin)
+                            continue;
                         // Remove encoding
                         encode(binary);
                         // Convert binary string to decimal
