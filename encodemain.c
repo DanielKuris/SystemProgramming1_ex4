@@ -31,17 +31,17 @@ int main(int argc, char *argv[]) {
             size_t filenameLength = strlen(extension) - strlen(filename) -1; //-1 to include the dot '.' 
 
             // Allocate memory for the binary filename
-            char binFilename[filenameLength + 5]; // +5 for ".bin" and null terminator
+            char binFileName[filenameLength + 5]; // +5 for ".bin" and null terminator
 
             // Copy the filename without the extension
-            memcpy(binFilename, filename, filenameLength);
-            binFilename[filenameLength] = '\0'; // Null-terminate the string
+            memcpy(binFileName, filename, filenameLength);
+            binFileName[filenameLength] = '\0'; // Null-terminate the string
 
             // Append the ".bin" extension
-            strcat(binFilename, ".bin");
+            strcat(binFileName, ".bin");
 
             // Clear the binary file
-            FILE *binFile = fopen(binFilename, "wb");
+            FILE *binFile = fopen(binFileName, "wb");
             if (binFile == NULL) {
                 printf("Error clearing binary file.\n");
                 return 1;
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
             fclose(binFile); // Close the binary file
 
             // Reopen the binary file for appending
-            binFile = fopen(binFilename, "ab");
+            binFile = fopen(binFileName, "ab");
             if (binFile == NULL) {
                 printf("Error opening binary file for appending.\n");
                 return 1;
@@ -193,7 +193,7 @@ int main(int argc, char *argv[]) {
             strcat(txtFileName, ".bin");
 
             // Clear the text file
-            FILE *txtFile = fopen(textFilename, "w");
+            FILE *txtFile = fopen(textFileName, "w");
             if (txtFile == NULL) {
                 printf("Error clearing text file.\n");
                 return 1;
@@ -202,7 +202,7 @@ int main(int argc, char *argv[]) {
             fclose(txtFile); // Close the text file
 
             // Reopen the text file for appending
-            txtFile = fopen(textFilename, "a");
+            txtFile = fopen(textFileName, "a");
             if (txtFile == NULL) {
                 printf("Error opening text file for appending.\n");
                 return 1;
