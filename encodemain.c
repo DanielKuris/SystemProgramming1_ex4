@@ -239,9 +239,8 @@ int main(int argc, char *argv[]) {
                         // Convert binary string to decimal
                         int decimal = binaryToInt(binary);
                         // Write the decimal number to the text file
-                        if(decimal>9 || decimal<0)
-                           continue;
-                        fprintf(txtFile, "%d", decimal);
+                        if(decimal<=9 && decimal>=0) //Make sure the decimal is from [0,..,9]
+                           fprintf(txtFile, "%d", decimal);
                         // Reset the count for the next binary number
                         count = 0;
                     }
